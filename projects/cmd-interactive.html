@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRAL | Interactive Colour Magnitude Diagram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/pages/article.css">
+<link rel="stylesheet" href="../assets/css/transitions.css">
+<link rel="icon" href="../assets/icons/logo.ico">
+</head>
+<body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="project-article">
+    <div class="cursor">
+        <p></p>
+    </div>
+    <div class="blob"></div>
+        <div data-site-nav data-nav-class="bg-nav"></div>
+    <div class="scroll-container">
+        <div class="hero">
+            <div class="title-container">
+                <h1>Interactive Colour Magnitude Diagram</h1>
+                <div class="tags">
+                    <div class="tag">astrophysics</div>
+                    <div class="tag">data visualisation</div>
+                    <div class="tag">ui/ux</div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="effect-container">
+                    <img src="../assets/images/Projects/cmd-interactive-mockup-landscape.jpg" alt="">
+                    <div class="grid-effect"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="section download">
+                <h2>View Tool</h2>
+                <a href="../tools/cmd-interactive/cmd_plot.html">View Tool</a>
+            </div>
+            <div class="section supervisors">
+                <h2>Supervisors</h2>
+                <div class="grid">
+                    <div class="person">
+                        <img src="../assets/images/Mentors/mbailes.jpg" alt="">
+                        <h3>Prof. Matthew Bailes</h3>
+                    </div>
+                    <div class="person">
+                        <img src="../assets/images/Mentors/cflynn.png" alt="">
+                        <h3>Dr. Chris Flynn</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="section contributors">
+                <h2>Contributors</h2>
+                <div class="grid">
+                    <div class="person">
+                        <img src="../assets/images/cohort/ASTRAL 2024/rebecca.png" alt="">
+                        <h3>Rebecca Koehne</h3>
+                    </div>
+                    <div class="person">
+                        <img src="../assets/images/cohort/ASTRAL 2024/evie.jpg" alt="">
+                        <h3>Evie Spilias</h3>
+                    </div>
+                    <div class="person">
+                        <img src="../assets/images/cohort/ASTRAL 2025/sevryn-25.jpg" alt="">
+                        <h3>Sevryn Danilov</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="section text credits">
+                <h2>Credits</h2>
+                <h3>Data collated by Sevryn Danilov.</h3>
+                <h3>Program developed by Rebecca Koehne and Evie Spilias.</h3>
+                <p>
+                    Thank you to Rudra Sekhri for converting the program into a compatible format and embedding it onto the ASTRAL website. Thank you to Nandini Vyas and Prof. Matthew Bailes for their assistance in utilising the GAIA database. Thank you to Prof. Chris Flynn for supervising this project and guiding our use of the SIMBAD database. This project is funded by A.S.T.R.A.L.
+                </p>
+            </div>
+            <div class="section text introduction">
+                <h2>Introduction</h2>
+                <p>
+                    This project sought to generate a colour-magnitude diagram from raw data in order to determine what star types exist in each area of the graph and, in the process, collate a cleaned dataset of stars and their attributes for use in further projects. To achieve this, information from two databases was combined: one much older, with stars categorised manually, and one more recent that was created with modern techniques. This allowed the expected positions of the old categorisations to be compared with the modern data points, enabling evaluation of the previous method's accuracy. The result is an interactive scatter plot, with star type visually represented by colour and shape, rollover data available for each data point, and the plotting of each star category able to be toggled on and off. The diagram can be viewed in the Online Tools page of this website.
+                </p>
+            </div>
+            <!-- <div class="section download">
+                <h2>Download Full Report</h2>
+                <a href="../assets/docs/projects/ASTRAL-Case-Study.pdf">DOWNLOAD PDF</a>
+            </div> -->
+        </div>
+                <div data-site-footer></div>
+    </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="../assets/js/core/layout.js"></script>
+    <script src="../assets/js/core/smooth-scroll.js"></script>
+    <script src="../assets/js/core/cursor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.js"></script>
+    <script src="../assets/js/effects/scroll-reveal.js"></script>
+    <script src="../assets/js/core/navbar_new.js"></script>
+    <script src="../assets/js/effects/article-grid-effect.js"></script>
+    <script src="../assets/js/core/page-transitions.js"></script>
+</body>
+</html>
