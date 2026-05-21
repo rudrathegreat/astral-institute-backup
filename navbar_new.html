@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
+    <title>ASTRAL | Navbar Test</title>
+    <link rel="stylesheet" href="assets/css/global_integrated.css">
+    <link rel="stylesheet" href="assets/css/navbar_new_new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/icons/logo.ico">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">
+            <img src="assets/icons/logo.svg" alt="" class="logo">
+        </a>
+        <button class="menu-icon" onclick="toggleMenu();">
+            <div class="text">
+                <p>Menu</p>
+                <p>Close</p>
+            </div>
+            <div class="img-icon"><img src="assets/icons/menu-icon-white.svg" alt="" class="menu-img"></div>
+        </button>
+        <div class="menu">
+            <div class="links">
+                <div class="categories">
+                    <a href="index.html" class="reveal-text">HOME</a>
+                    <a onclick="toggleOptions('about-options');" class="reveal-text">ABOUT</a>
+                    <a onclick="toggleOptions('work-options');" class="reveal-text">WORK</a>
+                    <a onclick="toggleOptions('cohort-options');" class="reveal-text">COHORT</a>
+                    <a href="apply.html" class="reveal-text">APPLY</a>
+                    <a href="events.html" class="reveal-text">EVENTS</a>
+                    <a href="support.html" class="reveal-text">SUPPORT</a>
+                    <a href="contact.html" class="reveal-text">CONTACT</a>
+                    <a href="faqs.html" class="reveal-text">FAQS</a>
+                </div>
+                <div class="submenu-container">
+                    <div class="options">
+                        <div class="about-options nav-options">
+                            <a href="about.html" data-image="assets/images/Classroom-shots/0F7A1294.jpg" class="reveal-text-single">Vision and Mission</a>
+                            <a href="team.html" data-image="assets/images/Mentors/all-mentors.jpg" class="reveal-text-single">Mentors</a>
+                            <a href="code-of-conduct.html" data-image="assets/images/Classroom-shots/0F7A1132.jpg" class="reveal-text-single">Code of Conduct</a>
+                        </div>
+                        <div class="work-options nav-options">
+                            <a href="projects.html" data-image="assets/images/Projects/gravitational-waves.jpg" class="reveal-text-single">Projects</a>
+                            <a href="tools.html" data-image="assets/images/Projects/cmd-interactive-mockup-landscape.jpg" class="reveal-text-single">Online Tools</a>
+                        </div>
+                        <div class="cohort-options nav-options">
+                            <a href="cohort.html" data-image="assets/images/cohort/ASTRAL 2026/0F7A1077.jpg" class="reveal-text-single">Current ASTRAL Cohort</a>
+                            <a href="past_cohorts.html" data-image="assets/images/cohort/ASTRAL 2025/astral2025.jpg" class="reveal-text-single">Past ASTRAL Cohort</a>
+                        </div>
+                    </div>
+                    <div class="options-image-display">
+                        <img src="" alt="" class="options-image">
+                    </div>
+                </div>
+            </div>
+            <div class="social-media-section">
+                <a href="https://www.linkedin.com/company/astral-institute" class="social-link underline-button reveal-image">
+                    <div>
+                            <div class="text-indicator">
+                                <p>LinkedIn</p>
+                                <p>LinkedIn</p>
+                            </div>
+                            <div class="img-indicator">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                            </div>
+                        </div>
+                </a>
+                <a href="https://discord.gg/Yp6v8xcrT9" class="social-link underline-button reveal-image">
+                    <div>
+                            <div class="text-indicator">
+                                <p>Discord</p>
+                                <p>Discord</p>
+                            </div>
+                            <div class="img-indicator">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                            </div>
+                        </div>
+                </a>
+                <a href="https://www.instagram.com/astral.institute/" class="social-link underline-button reveal-image">
+                    <div>
+                            <div class="text-indicator">
+                                <p>Instagram</p>
+                                <p>Instagram</p>
+                            </div>
+                            <div class="img-indicator">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                            </div>
+                        </div>
+                </a>
+                <a href="mailto:mbailes@swin.edu.au" class="social-link underline-button reveal-image">
+                    <div>
+                            <div class="text-indicator">
+                                <p>Email</p>
+                                <p>Email</p>
+                            </div>
+                            <div class="img-indicator">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                                <img src="assets/icons/arrow-link.svg" alt="">
+                            </div>
+                        </div>
+                </a>
+                <div class="application-status reveal-image">
+                    <p>Applications Closed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/effects/scroll-reveal.js"></script>
+    <script src="assets/js/core/navbar_new.js"></script>
+</body>
+</html>
