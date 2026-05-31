@@ -386,6 +386,10 @@
         background-size:cover !important;
     }
 
+    .hero h1 {
+        font-size:14vw;
+    }
+
     .team {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }

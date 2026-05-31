@@ -275,7 +275,7 @@ body {
 
 .navbar .text {
     width: max-content;
-    height: var(--ascii-font-size);
+    height: var(--new-main-font-size);
     overflow: hidden;
     color: white;
 }
@@ -286,7 +286,7 @@ body {
 }
 
 .navbar .text p {
-    font-size: var(--ascii-font-size);
+    font-size: var(--new-main-font-size);
     line-height: 1;
 }
 
@@ -1150,7 +1150,6 @@ h3 {
 .services a div {
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
 
 .accordion:hover {
@@ -1515,6 +1514,10 @@ h3 {
     .hero h1 {
         width: 100%;
         font-size: 2.5em;
+    }
+
+    body:not(.home-page) .hero h1 {
+        letter-spacing: 0px !important;
     }
 
     .hero video {
@@ -2074,7 +2077,7 @@ ul li {
 }
 .navbar .text {
     width: max-content;
-    height: var(--ascii-font-size);
+    height: var(--new-main-text-size);
     overflow: hidden;
     color: white;
 }
@@ -2085,7 +2088,7 @@ ul li {
 }
 
 .navbar .text p {
-    font-size: var(--ascii-font-size);
+    font-size: var(--new-main-text-size);
     line-height: 1;
 }
 
@@ -2270,6 +2273,7 @@ ul li {
     width: max-content !important;
     padding-bottom: 1vh !important;
     text-transform: initial !important;
+    height:max-content !important;
 }
 
 .navbar .underline-button div {
@@ -2468,6 +2472,13 @@ body .projects .underline-button p {
 }
 
 @media (max-width:768px) {
+
+    .menu-icon {
+        gap:3vw;
+        border-radius:5px;
+        padding-left:3vw;
+        padding-right:3vw;
+    }
     .menu .links .categories {
         flex-wrap:wrap;
         border-bottom:2px solid rgba(0,0,0,0.2);

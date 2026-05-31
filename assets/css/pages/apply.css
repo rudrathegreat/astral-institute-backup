@@ -11,7 +11,7 @@
 .hero {
     height:90vh;
     background-image:linear-gradient(rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3)), url('../../images/Miscellaneous/Other/telescope.jpg');
+    rgba(0, 0, 0, 0.3)), url('../../images/Classroom-shots/0F7A1141.jpg');
     background-position: 50% 30%;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -29,6 +29,7 @@
     line-height:1;
     letter-spacing:-5px;
     margin-top:10vh;
+    font-family:'Space Mono', monospace;
 }
 
 .hero .title-container {
@@ -58,8 +59,8 @@
     flex-direction: column;
     gap:3vh;
     width:100%;
-    padding:0 10vw;
-    padding-top:3vh;
+    padding:0 5vw;
+    padding-top:10vh;
 }
 
 .apply-section .section {
@@ -132,12 +133,19 @@ form input {
     }
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:768px) {
     .hero h1 {
-        font-size:13vw;
+        font-size:14vw;
     }
 
-    .footer {
-        padding-top:0;
+    .hero {
+        background-size:cover !important;
+        height:95vh;
     }
+
+    .hero a {
+        margin-bottom:0;
+        display:none;
+    }
+    
 }

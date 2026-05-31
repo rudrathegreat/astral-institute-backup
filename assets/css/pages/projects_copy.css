@@ -267,9 +267,18 @@
 }
 
 @media (max-width: 768px) {
+    .hero {
+        background-size:cover !important;
+        height:95vh;
+    }
+
     .hero h1 {
-        font-size:10vw;
-        letter-spacing:-3px;
+        font-size:14vw;
+    }
+
+    .hero a {
+        margin-bottom:0;
+        display:none;
     }
 
     .main-content {

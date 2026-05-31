@@ -17,6 +17,14 @@
     padding-bottom:5vh;
 }
 
+.student-reviews-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)), url('../../images/Classroom-shots/0F7A1112.jpg');
+    background-position: 50% 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .hero h1 {
     font-size:7vw;
     font-weight:400;
@@ -155,10 +163,37 @@
     overflow: hidden;
 }
 
+.student-reviews .main-mentor .description p {
+    font-size:var(--new-main-text-size);
+}
+
+.student-reviews .main-mentor .right-column img {
+    height:40vh;
+}
+
+.student-reviews .main-mentor .main-info {
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 @media (max-width: 768px) {
     .main-mentor {
         flex-direction: column-reverse;
         gap:3vh;
+    }
+
+    .hero {
+        background-size:cover !important;
+        height:95vh;
+    }
+
+    .hero a {
+        margin-bottom:0;
+        display:none;
+    }
+
+    .hero h1 {
+        font-size:14vw;
     }
 
     .main-mentor .right-column,

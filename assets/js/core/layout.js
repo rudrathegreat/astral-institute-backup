@@ -73,6 +73,7 @@
                         <div class="about-options nav-options">
                             <a href="${rootPath('about.html')}" data-image="${assetPath('images/Classroom-shots/0F7A1294.jpg')}" class="reveal-text-single">Vision and Mission</a>
                             <a href="${rootPath('team.html')}" data-image="${assetPath('images/Mentors/all-mentors.jpg')}" class="reveal-text-single">Mentors</a>
+                            <a href="${rootPath('student-reviews.html')}" data-image="${assetPath('images/Classroom-shots/0F7A1112.jpg')}" class="reveal-text-single">Student Reviews</a>
                             <a href="${rootPath('code-of-conduct.html')}" data-image="${assetPath('images/Classroom-shots/0F7A1132.jpg')}" class="reveal-text-single">Code of Conduct</a>
                         </div>
                         <div class="work-options nav-options">
@@ -167,7 +168,7 @@
                 <div class="copyright">
                     <p>We acknowledge and pay respects to the Elders and Traditional Owners of the land on which our program runs.</p>
                     <p>&copy; 2025. Astrophysics, Supercomputing, Technology, Research, Analytics, Leadership Institute (ASTRAL). All Rights Reserved. Designed and Developed by Rudra Sekhri</p>
-                    <p>Credit to Carl Knox from OzGrav, NASA</p>
+                    <p>Credit to Carl Knox from OzGrav, NASA and ESA</p>
                     <a class="underline-button" href="${rootPath('privacy-policy.html')}">
                         <div>
                             <div class="text-indicator">

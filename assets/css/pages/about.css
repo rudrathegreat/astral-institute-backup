@@ -5,7 +5,7 @@
 .hero {
     height:90vh;
     background-image:linear-gradient(rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3)), url('../../images/Miscellaneous/Carl-images/virtual-universe.jfif');
+    rgba(0, 0, 0, 0.3)), url('../../images/Classroom-shots/0F7A1294.jpg');
     background-position: 50% 30%;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -36,6 +36,9 @@
     line-height:1;
     letter-spacing:-5px;
     margin-top:10vh;
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    margin-bottom:0;
 }
 
 .hero .title-container {
@@ -59,6 +62,35 @@
     margin-bottom:1vh;
 }
 
+.main-content {
+    padding:15vh 5vw;
+    display:flex;
+    gap:3vw;
+    width:100%;
+}
+
+.main-content .text {
+    display: flex;
+    flex-direction: column;
+    gap:8vh;
+    width:90%;
+}
+
+.main-content p {
+    font-size:var(--new-heading-text-size);
+}
+
+.main-content .sidebar {
+    width:10%;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    z-index: 5;
+}
+
+.main-content .sidebar h2 {
+    margin-top:0.5vh;
+}
 
 .navbar {
     background:rgba(255,255,255,0.4);
@@ -75,126 +107,127 @@
     background:white;
 }
 
-.apply {
-    padding:15vh 5vw;
+.about-programs h1 {
+    background: linear-gradient(135deg, #6A6BF4, #5184F5);
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Make the text transparent so the background shows through */
+    color: transparent;
+    font-size:3em;
+    margin-bottom:5vh;
 }
 
-.apply .text {
+.about-programs {
+    padding: 5vh 5vw;
+    padding-bottom:10vh;
+}
+
+.about-description {
     display:flex;
-    flex-direction: column;
-    gap:1.5vh;
+    gap:3vw;
+    width:100%;
 }
 
-.apply .text p {
-    text-align: left !important;
+.about-description .left-column img {
+    width:100%;
+    height:55vh;
+    object-fit:cover;
+    border-radius:7px;
 }
 
-.apply .image .effect-container {
-    height:100%;
+.about-description > div {
+    display:flex;
+    flex-direction:column;
+    gap:4vh;
 }
 
-.apply .text p:last-child {
-    padding-bottom:5vh;
-    border-bottom: 2px solid black;
+.about-description .right-column {
+    justify-content: space-between;
 }
 
-.how {
+.about-description .paragraph-text p {
+    font-size:var(--new-main-text-size);
+}
+
+.about-description .paragraph-text {
+    display:flex;
+    flex-direction:column;
+    gap:3vh;
+    margin-top:0.5vh;
+}
+
+/* .about-description > div {
+    flex:1 1 0;
+} */
+
+.about-description .left-column p {
+    font-size:var(--new-heading-text-size);
+}
+
+.about-programs .image-caption-container {
+    display: flex;
+    gap:3vw;
+    justify-content:space-between;
+}
+
+.about-programs .rainbow-star {
+    width:4vw;
+    min-width:50px;
+}
+
+.about-programs .image-caption {
+    width:40%;
+}
+
+.about-programs .effect-container .grid-effect {
+    height:55vh;
+}
+
+.skills-grid {
     padding:10vh 5vw;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(500px, 1fr));
+    grid-row-gap:7vh;
+    grid-column-gap:3vw;
+}
+
+.skills-grid img {
+    width:100%;
+    height:40vh;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.skills-cell {
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
     gap:1.5vh;
 }
 
-.how .main-text {
-    font-size:var(--large-font-size);
-    width:100%;
+.skills-grid h2 {
+    font-family:'DM Sans', sans-serif;
+    text-transform:initial;
+    font-size:var(--new-heading-text-size);
+    color:black;
+    margin-top:1.5vh;
 }
 
-.project:nth-child(1) {
-    background:url('../../images/Miscellaneous/Other/ozstar.jpg');
-    background-position: 100% center;
-    background-size:200%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
+.skills-grid .skills-title {
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    font-size:var(--new-main-text-size);
+    color:#6A6BF4;
+    width:33%;
+    margin-top:0;
 }
 
-.project:nth-child(4) {
-    background-image:url('../../images/Miscellaneous/Other/code.png');
-    background-position: 100% center;
-    background-size:175%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
+.skills-grid .skills-cell:first-child {
+    justify-content: space-between;
 }
 
-.project:nth-child(5) {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)), url('../../images/Miscellaneous/Other/leadership.jpg');
-    background-position: 100% center;
-    background-size:175%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
-}
-
-.project:nth-child(6) {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)), url('../../images/Miscellaneous/Carl-images/maths.jpg');
-    background-position: 100% center;
-    background-size:150%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
-}
-
-.project h1 {
-    font-size:var(--extreme-font-size);
-}
-
-.scroll-container > h2 {
-    margin-bottom:3vh;
-    text-align:left;
-    margin-left:5vw;
-}
-
-.services {
-    margin-top:30vh;
-}
-
-.how .more-info {
-    width:100%;
-    display:flex;
-    flex-direction: column;
-    gap:1.5vh;
-    margin-top:3vh;
-}
-
-.projects-mobile {
-    display:none;
-}
-
-.projects {
-    display:block;
-}
-
-.scroll-container .projects .project:nth-child(2) {
-    background:url('../../images/Miscellaneous/Carl-images/parkes.jpg');
-    background-position: 100% center;
-    background-size:150%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
-}
-
-.scroll-container .projects .project:nth-child(3) {
-    background-image:linear-gradient(rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)), url('../../images/Miscellaneous/Carl-images/research.jpg');
-    background-position: 100% center;
-    background-size:150%;
-    background-repeat: no-repeat;
-    height:90vh;
-    width:100vw;
+.skills-grid .ascii {
+    width:50%;
 }
 
 @media screen and (max-width:1300px) {
@@ -204,7 +237,7 @@
     }
     .hero {
         background-size:cover !important;
-        height:70vh;
+        height:95vh;
     }
 
     .hero h1 {
@@ -214,57 +247,66 @@
         .projects {
         display:none;
     }
-
-    .projects-mobile {
-        display:block;
-        width:100%;
-        display:flex;
-        flex-direction: column;
-        padding:3vh 2.5vw;
-        gap:1vh;
-    }
-
-    .projects-mobile .project {
-        width:100%;
-        height:30vh;
-        background-size:cover !important;
-        background-position: center !important;
-        padding:2vh 2.5vw;
-    }
 }
 
-@media screen and (max-width:1000px) {
-    .apply .image {
-        transform:translate(0);
+@media screen and (max-width:768px) {
+    .main-content, .about-description {
+        flex-direction: column;
     }
 
-    .apply .text p {
-        margin-left:0 !important;
+    .main-content .sidebar {
         width:100%;
-        font-size:var(--small-font-size);
-        letter-spacing: 0;
     }
 
-    .how p {
-        width:100% !important;
+    .main-content {
+        padding:10vh 5vw;
     }
 
-    .how .more-info {
-        width:100% !important;
+    .about-programs h1 {
+        font-size:var(--new-heading-text-size);
+        margin-bottom:3vh;
     }
 
-    .apply, .how, .scroll-container > h2, .services, .cohort, .footer, .services h2 {
-        padding-top:7.5vh;
-        margin-top:0;
+    .about-programs img {
+        height:40vh !important;
+    }
+
+    .about-description {
+        gap:3vh;
+    }
+
+    .about-programs .image-caption-container {
+        display:none;
+    }
+
+    .skills-grid {
+        display:flex;
+        flex-direction:column;
+        gap:3vh;
+        padding: 5vh 5vw;
+    }
+
+    .skills-cell {
+        margin-bottom:4vh;
+    }
+
+    .skills-cell:first-child {
         margin-bottom:0;
-        padding-bottom:0;
     }
 
-    .footer {
-        padding-bottom:5vh;
+    .skills-cell:last-child {
+        margin-bottom:0;
     }
 
-    .services h2 {
-        margin-bottom:1vh;
+    .skills-grid .skills-title {
+        width:100%;
+    }
+
+    .skills-grid .ascii {
+        display:none;
+    }
+
+    .about-programs .effect-container .grid-effect {
+        height:40vh;
     }
 }

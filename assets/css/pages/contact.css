@@ -23,6 +23,7 @@
     line-height:1;
     letter-spacing:-5px;
     margin-top:10vh;
+    font-family:'Space Mono', monospace;
 }
 
 .hero .title-container {
@@ -61,12 +62,15 @@
     background:white;
 }
 
-.contact-div {
-    padding:10vh 10vw;
+.contact-info {
+    width: 90vw;
     display:flex;
-    gap:5vh;
     flex-direction: column;
-    align-items: center;
+    gap:5vh;
+    padding-top:10vh;
+    margin-left: 5vw;
+    padding-bottom: 5vh;
+    text-align:left;
 }
 
 .contact-div div {
@@ -76,6 +80,10 @@
     align-items: center;
 }
 
+.contact-info .underline-button {
+    /* margin-top:3vh; */
+}
+
 @media screen and (max-width:1300px) {
     .hero a {
         margin-bottom:0;
@@ -83,6 +91,7 @@
     }
     .hero {
         background-size:cover !important;
+        height:95vh;
     }
 
     .contact-div h2, .contact-div p {

@@ -92,6 +92,21 @@ h2 {
     transition: background 0.3s ease, color 0.3s ease-in-out;
 }
 
+.services {
+    padding:10vh 5vw;
+    display:flex;
+    flex-direction: column;
+}
+
+.services > .underline-button .text-indicator {
+    width:max-content;
+}
+
+.services > .underline-button {
+    margin-top:3vh;
+    width:max-content;
+}
+
 @media screen and (max-width:1300px) {
     .hero a {
         margin-bottom:0;
@@ -99,6 +114,7 @@ h2 {
     }
     .hero {
         background-size:cover !important;
+        height:95vh;
     }
 }
 
