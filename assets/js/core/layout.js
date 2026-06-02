@@ -154,7 +154,7 @@
         return `
         <div class="footer">
             <div class="supporters">
-                <h2>A.S.T.R.A.L. is supported by</h2>
+                <h2>ASTRAL is supported by</h2>
                 <div class="partners">
                     <a href="https://www.swinburne.edu.au">
                         <img src="${assetPath('images/Miscellaneous/Logos/swin.jpg')}" alt="">
@@ -168,7 +168,7 @@
                 <div class="copyright">
                     <p>We acknowledge and pay respects to the Elders and Traditional Owners of the land on which our program runs.</p>
                     <p>&copy; 2025. Astrophysics, Supercomputing, Technology, Research, Analytics, Leadership Institute (ASTRAL). All Rights Reserved. Designed and Developed by Rudra Sekhri</p>
-                    <p>Credit to Carl Knox from OzGrav, NASA and ESA</p>
+                    <p>Photo Credit to Carl Knox from OzGrav, NASA and ESA</p>
                     <a class="underline-button" href="${rootPath('privacy-policy.html')}">
                         <div>
                             <div class="text-indicator">
