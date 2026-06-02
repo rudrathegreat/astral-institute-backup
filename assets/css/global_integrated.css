@@ -145,6 +145,7 @@ ul li {
 a {
     font-family: 'DM Sans', sans-serif;
     text-transform: initial;
+    cursor:pointer !important;
 }
 
 h2 {
