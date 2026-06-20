@@ -1,69 +1,83 @@
 // Interactive acronym buttons with smooth animations
 
+function getInteractiveMeasurementWidth(element) {
+    if (!element) return 0;
+
+    const computedStyle = window.getComputedStyle(element);
+    const paddingX = parseFloat(computedStyle.paddingLeft || 0) + parseFloat(computedStyle.paddingRight || 0);
+    const borderX = parseFloat(computedStyle.borderLeftWidth || 0) + parseFloat(computedStyle.borderRightWidth || 0);
+    const availableWidth = element.clientWidth || element.offsetWidth || (element.parentElement ? element.parentElement.clientWidth : 0) || 0;
+
+    return Math.max(1, Math.floor(availableWidth - paddingX - borderX));
+}
+
 function buildInteractiveLineFragment(element, text) {
-    const cleanText = text.trim();
+    const cleanText = (text || '').trim();
     if (!cleanText) return { fragment: document.createDocumentFragment(), contents: [], text: '' };
 
     const computedStyle = window.getComputedStyle(element);
-    const width = element.offsetWidth || element.parentElement.offsetWidth;
+    const width = getInteractiveMeasurementWidth(element);
+    const words = cleanText.split(/\s+/).filter(Boolean);
     const measureContainer = document.createElement('div');
-    const words = cleanText.split(/\s+/);
+    const lineMeasure = document.createElement('span');
+    const lines = [];
+    let currentLine = '';
 
     measureContainer.style.cssText = `
         position: absolute;
         visibility: hidden;
         width: ${width}px;
+        max-width: ${width}px;
         font: ${computedStyle.font};
         letter-spacing: ${computedStyle.letterSpacing};
         text-transform: ${computedStyle.textTransform};
         line-height: ${computedStyle.lineHeight};
         padding: ${computedStyle.padding};
+        border: ${computedStyle.border};
+        box-sizing: border-box;
         pointer-events: none;
         white-space: normal;
-        word-break: normal;
+        word-break: ${computedStyle.wordBreak};
+        overflow-wrap: ${computedStyle.overflowWrap};
     `;
 
-    words.forEach((word, index) => {
-        const span = document.createElement('span');
-        span.textContent = word;
-        measureContainer.appendChild(span);
-
-        if (index < words.length - 1) {
-            measureContainer.appendChild(document.createTextNode(' '));
-        }
-    });
-
+    lineMeasure.style.cssText = 'display: inline-block; white-space: nowrap; visibility: hidden; position: absolute; left: -9999px; top: -9999px;';
+    measureContainer.appendChild(lineMeasure);
     document.body.appendChild(measureContainer);
 
-    const lines = [];
-    let currentLine = [];
-    let lastTop = -1;
+    const measureLineWidth = (candidate) => {
+        lineMeasure.textContent = candidate;
+        return lineMeasure.getBoundingClientRect().width;
+    };
 
-    measureContainer.querySelectorAll('span').forEach(span => {
-        const top = span.offsetTop;
+    words.forEach((word) => {
+        const candidate = currentLine ? `${currentLine} ${word}` : word;
+        const candidateWidth = measureLineWidth(candidate);
 
-        if (lastTop !== -1 && Math.abs(top - lastTop) > 5) {
+        if (currentLine && candidateWidth > width) {
             lines.push(currentLine);
-            currentLine = [];
+            currentLine = word;
+        } else {
+            currentLine = candidate;
         }
-
-        currentLine.push(span.textContent);
-        lastTop = top;
     });
 
-    lines.push(currentLine);
+    if (currentLine) {
+        lines.push(currentLine);
+    }
+
     document.body.removeChild(measureContainer);
 
     const fragment = document.createDocumentFragment();
     const contents = [];
 
-    lines.forEach(lineWords => {
+    lines.forEach((lineText) => {
         const mask = document.createElement('span');
         const content = document.createElement('span');
 
         mask.className = 'interactive-line-mask';
         content.className = 'interactive-line-content';
-        content.textContent = lineWords.join(' ');
+        content.textContent = lineText;
 
         mask.appendChild(content);
         fragment.appendChild(mask);
@@ -78,9 +92,33 @@ function splitInteractiveTextIntoLines(element, text) {
 
     element.innerHTML = '';
     element.dataset.currentText = lineData.text;
+    element.dataset.interactiveTextSplit = 'true';
     element.appendChild(lineData.fragment);
 
     return lineData.contents;
+}
+
+function reflowInteractiveTextElements() {
+    const elements = document.querySelectorAll('[data-interactive-text-split="true"]');
+
+    elements.forEach((element) => {
+        if (!element.dataset.currentText) return;
+        splitInteractiveTextIntoLines(element, element.dataset.currentText);
+    });
+}
+
+function initInteractiveTextResizeHandling() {
+    let resizeFrame = null;
+
+    const handleResize = () => {
+        if (resizeFrame) cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(() => {
+            reflowInteractiveTextElements();
+        });
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', handleResize);
 }
 
 function getInteractiveLines(element) {
@@ -268,6 +306,7 @@ function initStudentReviews() {
 function initInteractiveSections() {
     initAcronymButtons();
     initStudentReviews();
+    initInteractiveTextResizeHandling();
 }
 
 window.AstralAcronymInteractive = {
