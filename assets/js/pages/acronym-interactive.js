@@ -122,6 +122,15 @@ function animateLineTextSwap(element, nextText) {
     return tl;
 }
 
+function preloadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(src);
+        img.onerror = reject;
+        img.src = src;
+    });
+}
+
 function initAcronymButtons() {
     const buttons = document.querySelectorAll('.acronym-button');
     const acronymText = document.querySelector('.acronym-text');
@@ -165,14 +174,23 @@ function initAcronymButtons() {
                 ease: 'power2.inOut'
             }, 0.05)
             .add(() => {
-                acronymImage.src = image;
-            })
-            .to(acronymImage, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'power2.out'
-            }, '-=0.35');
+                gsap.set(acronymImage, { opacity: 0 });
+                preloadImage(image)
+                    .then(() => {
+                        acronymImage.src = image;
+                    })
+                    .catch(() => {
+                        acronymImage.src = image;
+                    })
+                    .finally(() => {
+                        gsap.to(acronymImage, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.5,
+                            ease: 'power2.out'
+                        });
+                    });
+            });
         });
     });
 }
@@ -213,14 +231,26 @@ function initStudentReviews() {
         }, 0)
         .add(() => {
             gsap.set(reviewImage, { opacity: 0 });
-            reviewImage.src = student.dataset.image;
-            reviewImage.alt = `${student.querySelector('.name').textContent} review`;
-        })
-        .to(reviewImage, {
-            opacity: 1,
-            y: 0,
-            duration: 0.52,
-            ease: 'power2.out'
+            const image = student.dataset.image;
+            const altText = `${student.querySelector('.name').textContent} review`;
+
+            preloadImage(image)
+                .then(() => {
+                    reviewImage.src = image;
+                    reviewImage.alt = altText;
+                })
+                .catch(() => {
+                    reviewImage.src = image;
+                    reviewImage.alt = altText;
+                })
+                .finally(() => {
+                    gsap.to(reviewImage, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.52,
+                        ease: 'power2.out'
+                    });
+                });
         });
     };
 
