@@ -88,6 +88,13 @@
     }
 
     window.addEventListener('load', function() {
+        // Check if device is mobile
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        let finalWidth = "250vw";
+        if (isMobile) {
+            // Set final width of loading image to 500vw
+            finalWidth = "500vw";
+        }
         if (window.gsap) {
             if (progressTween) progressTween.kill();
 
@@ -109,7 +116,7 @@
 
                     if (loadingImage) {
                         timeline.to(loadingImage, {
-                            width: "250vw",
+                            width: finalWidth,
                             duration: 1.3,
                             ease: "power2.in"
                         });
