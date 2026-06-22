@@ -77,6 +77,7 @@ html.lenis {
 .word-content {
     display: block;
     will-change: transform;
+    white-space: pre-wrap;
 }
 
 .word-content {

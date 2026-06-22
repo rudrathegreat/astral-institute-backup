@@ -12,12 +12,12 @@ function getInteractiveMeasurementWidth(element) {
 }
 
 function buildInteractiveLineFragment(element, text) {
-    const cleanText = (text || '').trim();
+    const cleanText = (text || '').replace(/\s+/g, ' ').trim();
     if (!cleanText) return { fragment: document.createDocumentFragment(), contents: [], text: '' };
 
     const computedStyle = window.getComputedStyle(element);
     const width = getInteractiveMeasurementWidth(element);
-    const words = cleanText.split(/\s+/).filter(Boolean);
+    const words = cleanText.split(' ').filter(Boolean);
     const measureContainer = document.createElement('div');
     const lineMeasure = document.createElement('span');
     const lines = [];
@@ -51,7 +51,7 @@ function buildInteractiveLineFragment(element, text) {
     };
 
     words.forEach((word) => {
-        const candidate = currentLine ? `${currentLine} ${word}` : word;
+        const candidate = currentLine ? `${currentLine}\u00A0${word}` : word;
         const candidateWidth = measureLineWidth(candidate);
 
         if (currentLine && candidateWidth > width) {
@@ -77,7 +77,15 @@ function buildInteractiveLineFragment(element, text) {
 
         mask.className = 'interactive-line-mask';
         content.className = 'interactive-line-content';
-        content.textContent = lineText;
+        content.style.whiteSpace = 'pre-wrap';
+
+        const lineWords = lineText.split('\u00A0').filter(Boolean);
+        lineWords.forEach((word, index) => {
+            if (index > 0) {
+                content.appendChild(document.createTextNode('\u00A0'));
+            }
+            content.appendChild(document.createTextNode(word));
+        });
 
         mask.appendChild(content);
         fragment.appendChild(mask);
@@ -85,6 +93,23 @@ function buildInteractiveLineFragment(element, text) {
     });
 
     return { fragment, contents, text: cleanText };
+}
+
+function runAfterLayoutStabilization(callback) {
+    const applyCallback = () => {
+        if (document.fonts && typeof document.fonts.ready?.then === 'function') {
+            document.fonts.ready.then(() => requestAnimationFrame(callback));
+            return;
+        }
+
+        requestAnimationFrame(callback);
+    };
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        applyCallback();
+    } else {
+        window.addEventListener('load', applyCallback, { once: true });
+    }
 }
 
 function splitInteractiveTextIntoLines(element, text) {
@@ -243,9 +268,13 @@ function initStudentReviews() {
     reviewText.dataset.astralReviewInit = 'true';
 
     const setReviewContent = (student) => {
-        splitInteractiveTextIntoLines(reviewText, student.dataset.text);
-        reviewImage.src = student.dataset.image;
-        reviewImage.alt = `${student.querySelector('.name').textContent} review`;
+        const applyReviewContent = () => {
+            splitInteractiveTextIntoLines(reviewText, student.dataset.text);
+            reviewImage.src = student.dataset.image;
+            reviewImage.alt = `${student.querySelector('.name').textContent} review`;
+        };
+
+        runAfterLayoutStabilization(applyReviewContent);
     };
 
     const activeStudent = document.querySelector('.student-reviews .student.active') || students[0];
