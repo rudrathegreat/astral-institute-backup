@@ -73,6 +73,9 @@
         if (loadingWords.length) {
             gsap.set(loadingWords, { y: "130%", opacity: 0 });
         }
+        if (whiteLoadingText) {
+            whiteLoadingText.classList.add("loading-text-ready");
+        }
 
         progressTween = gsap.to(progress, {
             value: 99,
@@ -154,6 +157,9 @@
                     word.style.transform = "translateY(0)";
                     word.style.opacity = "1";
                 });
+            }
+            if (whiteLoadingText) {
+                whiteLoadingText.classList.add("loading-text-ready");
             }
             if (whiteBackground) {
                 whiteBackground.style.transform = "scaleY(1)";
