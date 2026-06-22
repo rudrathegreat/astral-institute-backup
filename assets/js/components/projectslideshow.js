@@ -74,8 +74,8 @@
                             },
                             y: '0%',
                             opacity: 1,
-                            duration: 1.3,
-                            stagger: 0.035,
+                            duration: 0.9,
+                            stagger: 0.02,
                             ease: "power3.out",
                             onComplete: () => {
                                 isFirstLoad = false;
@@ -85,8 +85,8 @@
                         gsap.to(words, {
                             y: '0%',
                             opacity: 1,
-                            duration: 1.3,
-                            stagger: 0.035,
+                            duration: 0.9,
+                            stagger: 0.02,
                             ease: "power3.out"
                         });
                     }
@@ -111,7 +111,7 @@
                     gsap.to(words, {
                         y: '115%',
                         opacity: 0,
-                        duration: 0.45,
+                        duration: 0.4,
                         ease: 'power2.in',
                         overwrite: 'auto',
                     });
