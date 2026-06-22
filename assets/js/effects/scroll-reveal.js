@@ -121,6 +121,10 @@ function shouldSkipGenericReveal(element) {
     return element.matches('.navbar .reveal-text, .navbar .reveal-image, .mission-statement .reveal-text, .statistics-grid, .apply-content .reveal-image, .contacts .reveal-text, .contacts .reveal-image');
 }
 
+function isInteractiveRevealText(element) {
+    return element.dataset.interactiveRevealOwner === 'true' || element.dataset.interactiveTextSplit === 'true';
+}
+
 function wrapAsSingleLine(element) {
     if (element.classList.contains('processed')) return;
     const originalText = element.textContent.trim();
@@ -144,6 +148,21 @@ function wrapAsSingleLine(element) {
     element.classList.add('processed');
 }
 
+function prepareNavbarRevealText() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar || navbar.dataset.astralNavbarRevealPrepared === 'true') return;
+
+    navbar.querySelectorAll('.reveal-text').forEach(element => {
+        splitTextSurgically(element);
+    });
+
+    navbar.querySelectorAll('.reveal-text-single').forEach(element => {
+        wrapAsSingleLine(element);
+    });
+
+    navbar.dataset.astralNavbarRevealPrepared = 'true';
+}
+
 function initAnimations() {
     if (!window.gsap || !window.ScrollTrigger) return;
 
@@ -152,7 +171,11 @@ function initAnimations() {
     container.dataset.astralRevealInit = 'true';
 
     // 1. Split all reveal-text
-    const revealTexts = document.querySelectorAll('.reveal-text');
+    prepareNavbarRevealText();
+
+    const revealTexts = Array.from(document.querySelectorAll('.reveal-text')).filter(element => {
+        return !element.closest('.navbar') && !isInteractiveRevealText(element);
+    });
     revealTexts.forEach(element => {
         if (shouldRevealByWord(element)) {
             splitTextByWord(element);
@@ -163,7 +186,9 @@ function initAnimations() {
     });
 
     // 1b. Handle single-unit reveals
-    const singleRevealTexts = document.querySelectorAll('.reveal-text-single');
+    const singleRevealTexts = Array.from(document.querySelectorAll('.reveal-text-single')).filter(element => {
+        return !element.closest('.navbar') && !isInteractiveRevealText(element);
+    });
     singleRevealTexts.forEach(element => {
         wrapAsSingleLine(element);
     });
@@ -171,7 +196,7 @@ function initAnimations() {
     // 2. Set initial hidden states immediately
     gsap.set('.line-content', { y: '130%', opacity: 0 });
     gsap.set('.word-content', { y: '130%', opacity: 0 });
-    gsap.set('.reveal-image', { y: 60, opacity: 0 });
+    gsap.set('.reveal-image', { y: 15, opacity: 0 });
     gsap.set('.acronym-buttons.reveal-image', { y: 0, opacity: 1 });
     gsap.set('.acronym-buttons .acronym-button', { y: 34, opacity: 0 });
     gsap.set('.statistics-grid.reveal-image', { y: 0, opacity: 1 });
@@ -373,6 +398,8 @@ window.AstralScrollReveal = {
 
 window.addEventListener('load', () => {
     // Ensure Lenis and other scripts settle
+    prepareNavbarRevealText();
+
     if (document.querySelector('.loading-content')) return;
 
     setTimeout(initAnimations, 100);

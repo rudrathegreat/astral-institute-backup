@@ -266,10 +266,13 @@ function initStudentReviews() {
     if (!students.length || !reviewText || !reviewImage || !window.gsap) return;
     if (reviewText.dataset.astralReviewInit === 'true') return;
     reviewText.dataset.astralReviewInit = 'true';
+    reviewText.dataset.interactiveRevealOwner = 'true';
+    reviewText.classList.add('processed');
 
     const setReviewContent = (student) => {
         const applyReviewContent = () => {
             splitInteractiveTextIntoLines(reviewText, student.dataset.text);
+            reviewText.classList.add('processed');
             reviewImage.src = student.dataset.image;
             reviewImage.alt = `${student.querySelector('.name').textContent} review`;
         };

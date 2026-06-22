@@ -45,7 +45,7 @@ html.lenis {
 }
 
 /* Hide only when JS is active and before splitting is done */
-.js .reveal-text:not(.processed) {
+.js .reveal-text:not(.processed):not(.navbar *) {
     opacity: 0;
 }
 
@@ -95,7 +95,7 @@ html.lenis {
     display: block;
 }
 
-.js .reveal-image {
+.js .reveal-image:not(.navbar *) {
     opacity: 0;
     transform: translateY(30px);
 }
