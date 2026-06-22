@@ -373,6 +373,12 @@ window.AstralScrollReveal = {
 
 window.addEventListener('load', () => {
     // Ensure Lenis and other scripts settle
+    if (document.querySelector('.loading-content')) return;
+
+    setTimeout(initAnimations, 100);
+});
+
+window.addEventListener('astral:loader-complete', () => {
     setTimeout(initAnimations, 100);
 });
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASTRAL | Home</title>
     <link rel="stylesheet" href="assets/css/global_integrated.css">
+    <link rel="stylesheet" href="assets/css/loading-animation-test.css">
     <link rel="stylesheet" href="assets/css/project-slideshow.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,13 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/icons/logo.ico">
 </head>
-<body class="home-page">
+<body class="home-page loading-active">
+    <div class="loading-content">
+        <div class="white-background"></div>
+        <img src="assets/icons/rainbow-star-filled.svg" alt="" class="rainbow-star-filled">
+        <p class="loading-text">0%</p>
+        <p class="white-loading-text">We are ASTRAL</p>
+    </div>
     <div class="cursor">
         <p></p>
     </div>
@@ -508,6 +515,7 @@
     <script src="assets/js/core/navbar_new.js"></script>
     <script src="assets/js/effects/apply_section_grid_effect.js"></script>
     <script src="assets/js/pages/home.js"></script>
+    <script src="assets/js/components/loading-animation.js"></script>
     <script src="assets/js/effects/scroll-reveal.js"></script>
     <script src="assets/js/effects/contacts_section.js"></script>
     <script src="assets/js/pages/acronym-interactive.js"></script>
