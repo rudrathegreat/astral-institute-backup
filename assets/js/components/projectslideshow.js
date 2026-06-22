@@ -1,12 +1,21 @@
 (function () {
     let projectsSlideNumber = 0;
     let isFirstLoad = true;
-    const numSlides = 2;
+    const numSlides = 5;
     const titles = [
         'Discovering Nanohertz Frequency Gravitational Waves Using Pulsar Timing Arrays',
-        'Exacting Solar Magnitude Measurements using Solar Twin Data from Gaia Data Release 3'
+        'Exacting Solar Magnitude Measurements using Solar Twin Data from Gaia Data Release 3',
+        "ASTRAL's Interactive Tour of the Solar System (AstroTours)",
+        "ASTRAL's Planet Discovery Game",
+        "Simulating a Model of the Galaxy",
     ];
-    const projectLinks = ['projects/meerkat-pta.html', 'projects/solar-twin.html'];
+    const projectLinks = [
+        'projects/meerkat-pta.html',
+        'projects/solar-twin.html',
+        'projects/astrotours.html',
+        'projects/planet-discovery.html',
+        'projects/galaxy-simulation.html'
+    ];
 
     function splitTextIntoWords(element, text) {
         if (!window.gsap) {
