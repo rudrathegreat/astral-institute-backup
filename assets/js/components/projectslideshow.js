@@ -1,11 +1,36 @@
 (function () {
     let projectsSlideNumber = 0;
+    let isFirstLoad = true;
     const numSlides = 2;
     const titles = [
         'Discovering Nanohertz Frequency Gravitational Waves Using Pulsar Timing Arrays',
         'Exacting Solar Magnitude Measurements using Solar Twin Data from Gaia Data Release 3'
     ];
     const projectLinks = ['projects/meerkat-pta.html', 'projects/solar-twin.html'];
+
+    function splitTextIntoWords(element, text) {
+        if (!window.gsap) {
+            element.innerHTML = text;
+            return;
+        }
+        element.innerHTML = '';
+        const words = text.trim().split(/\s+/);
+        words.forEach((word, index) => {
+            const mask = document.createElement('span');
+            mask.className = 'word-mask';
+
+            const content = document.createElement('span');
+            content.className = 'word-content';
+            content.textContent = word;
+
+            mask.appendChild(content);
+            element.appendChild(mask);
+
+            if (index < words.length - 1) {
+                element.appendChild(document.createTextNode(' '));
+            }
+        });
+    }
 
     function displaySlides() {
         const slideshow = document.querySelector('.projects-slideshow');
@@ -26,8 +51,39 @@
             const h1 = slideshow.querySelector('.text-container h1');
             const link = slideshow.querySelector('.text .underline-button');
             if (h1) {
-                h1.innerHTML = titles[counter];
-                h1.style.transform = 'translateY(0)';
+                splitTextIntoWords(h1, titles[counter]);
+                if (window.gsap) {
+                    const words = h1.querySelectorAll('.word-content');
+                    gsap.set(words, { y: '115%', opacity: 0 });
+
+                    if (isFirstLoad && window.ScrollTrigger) {
+                        gsap.to(words, {
+                            scrollTrigger: {
+                                trigger: slideshow,
+                                start: "top 85%",
+                                toggleActions: "play none none none"
+                            },
+                            y: '0%',
+                            opacity: 1,
+                            duration: 1.3,
+                            stagger: 0.035,
+                            ease: "power3.out",
+                            onComplete: () => {
+                                isFirstLoad = false;
+                            }
+                        });
+                    } else {
+                        gsap.to(words, {
+                            y: '0%',
+                            opacity: 1,
+                            duration: 1.3,
+                            stagger: 0.035,
+                            ease: "power3.out"
+                        });
+                    }
+                } else {
+                    h1.style.transform = 'translateY(0)';
+                }
             }
             if (link) link.href = projectLinks[counter];
         });
@@ -39,7 +95,24 @@
 
         const h1 = slideshow.querySelector('.text-container h1');
         const active = slideshow.querySelector('.projects-container .active');
-        if (h1) h1.style.transform = 'translateY(100%)';
+        if (h1) {
+            if (window.gsap) {
+                const words = h1.querySelectorAll('.word-content');
+                if (words.length > 0) {
+                    gsap.to(words, {
+                        y: '115%',
+                        opacity: 0,
+                        duration: 0.45,
+                        ease: 'power2.in',
+                        overwrite: 'auto',
+                    });
+                } else {
+                    h1.style.transform = 'translateY(100%)';
+                }
+            } else {
+                h1.style.transform = 'translateY(100%)';
+            }
+        }
         if (active) active.classList.remove('active');
     }
 
@@ -48,19 +121,22 @@
     };
 
     window.nextSlide = function () {
+        isFirstLoad = false;
         projectsSlideNumber += 1;
         hideText();
-        setTimeout(displaySlides, 500);
+        setTimeout(displaySlides, 600);
     };
 
     window.previousSlide = function () {
+        isFirstLoad = false;
         projectsSlideNumber -= 1;
         hideText();
-        setTimeout(displaySlides, 500);
+        setTimeout(displaySlides, 600);
     };
 
     function initProjectsSlideshow() {
         projectsSlideNumber = 0;
+        isFirstLoad = true;
         displaySlides();
     }
 

@@ -104,10 +104,13 @@
 }
 
 .sidebar .tag p,
-.text-container h1,
 .text-container p {
     line-height: 1.2;
     transition: transform 0.5s ease;
+}
+
+.text-container h1 {
+    line-height: 1.2;
 }
 
 .projects .underline-button p {
@@ -123,9 +126,7 @@
     width:60%;
 }
 
-.text-container h1 {
-    transition-delay: 0.1s;
-}
+
 
 .projects-slideshow .active img {
     transition: transform 1s cubic-bezier(.2, .69, .39, 1), opacity 0.3s ease-in-out;
