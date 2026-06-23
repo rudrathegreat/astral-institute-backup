@@ -269,7 +269,7 @@
 @media (max-width: 768px) {
     .hero {
         background-size:cover !important;
-        height:95vh;
+        height:90vh;
     }
 
     .hero h1 {
@@ -344,4 +344,17 @@
         width:100%;
     }
 
+    .all-mentors-parallax {
+        background-size: cover !important;
+        height:40vh;
+        margin-top:5vh;
+        width:100vw;
+        margin-left:0;
+        margin-right:0;
+        border-radius:0;
+    }
+
+    .student img {
+        height:40vh;
+    }
 }
