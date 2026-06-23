@@ -38,11 +38,11 @@ h3 {
     width:90vw;
 }
 
-.navbar {
+/* .navbar {
     background:rgba(255,255,255,0.4);
     backdrop-filter: blur(40px);
     border: 1px solid rgba(255,255,255,0.15);
-}
+} */
 
 .content div {
     display:flex;

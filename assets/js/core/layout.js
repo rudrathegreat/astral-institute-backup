@@ -1,3 +1,16 @@
+function styleNavbar() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    if (window.scrollY > window.innerHeight * 0.8) {
+        navbar.style.background = 'rgba(255,255,255,0.4)';
+        navbar.style.backdropFilter = 'blur(40px)';
+    } 
+    else {
+        navbar.style.background = 'none';
+        navbar.style.backdropFilter = 'none';
+    }
+}
+
 (function () {
     const script = document.currentScript || Array.from(document.scripts).find((item) => {
         const src = item.getAttribute('src') || '';
@@ -366,6 +379,13 @@
                     this.classList.remove('hovered');
                 });
             });
+
+            // Handle CSS changes on scroll for navbar
+            if (!document.querySelector('body').classList.contains('no-bg-page')) {
+                window.addEventListener('scroll', () => {
+                    styleNavbar();
+                });
+            }
         }, 200);
     });
 })();
